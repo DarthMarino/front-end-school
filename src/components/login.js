@@ -31,7 +31,10 @@ export default class Login extends Component {
 
                 <button type="submit" className="btn btn-outline-primary btn-block">Iniciar sesión</button>
                 {/* <button type="submit" className="btn btn-outline-warning btn-block">Iniciar sesión con google</button> */}
+                <div id="googleBtn">
+                <br />
                 <GoogleBtn />
+                </div>
                 <p className="forgot-password text-right">
                     ¿Olvidaste tu <Link to={"/recoverPass"}>contraseña?</Link>
                 </p>

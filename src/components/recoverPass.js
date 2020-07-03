@@ -5,7 +5,7 @@ export default class recoverPass extends Component {
     render() {
         return (
             <>
-                <h3>Cambiar clave</h3>
+                <h3>Establecer nueva clave</h3>
 
                 <div className="form-group">
                     <h6>Introduzca su clave actual</h6>

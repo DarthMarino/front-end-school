@@ -39,3 +39,23 @@
 .form{
   margin-top: 100px;
 }
+#googleBtn{
+  position: relative;
+  margin-left: 70px;
+  border-radius: 25px;
+}
+#formulario{
+  margin-top: 80px;
+}
+#copyr{
+  color: black;
+  /* margin: 10px; */
+  background-color: white;
+}
+#title{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 25px;
+  color: blue;
+  border: black;
+  border-radius: 15px;
+}
