@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import recoverPass from './recoverPass';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./icon2.png";
-
+import GoogleBtn from "./googleBtn";
 export default class Login extends Component {
     render() {
         return (
@@ -30,7 +30,8 @@ export default class Login extends Component {
                 </div>
 
                 <button type="submit" className="btn btn-outline-primary btn-block">Iniciar sesión</button>
-                <button type="submit" className="btn btn-outline-warning btn-block">Iniciar sesión con google</button>
+                {/* <button type="submit" className="btn btn-outline-warning btn-block">Iniciar sesión con google</button> */}
+                <GoogleBtn />
                 <p className="forgot-password text-right">
                     ¿Olvidaste tu <Link to={"/recoverPass"}>contraseña?</Link>
                 </p>
