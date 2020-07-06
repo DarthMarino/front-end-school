@@ -16,6 +16,7 @@ import Navigation from "./components/Navigation/Navigation.component";
 
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import AboutUs from "./pages/AboutUs/AboutUs.page";
 
 // Mover esto a un componente aparte.
 class App extends Component {
@@ -67,14 +68,7 @@ class App extends Component {
                   exact
                   path="/"
                   render={() => {
-                    return (
-                      <InviteUsers
-                        currentUser={currentUser}
-                        currentClass={currentClass}
-                        users={users}
-                        changeState={this.changeState}
-                      />
-                    );
+                    return <AboutUs />;
                   }}
                 />
                 <Route
@@ -103,7 +97,12 @@ class App extends Component {
                   path="/inviteUsers"
                   render={() => {
                     return currentUser && users.length ? (
-                      <InviteUsers currentUser={currentUser} users={users} />
+                      <InviteUsers
+                        currentUser={currentUser}
+                        currentClass={currentClass}
+                        users={users}
+                        changeState={this.changeState}
+                      />
                     ) : (
                       <Redirect to="/" />
                     );
