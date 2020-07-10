@@ -1,0 +1,13 @@
+.card{
+    margin: 10px ;
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+.div{
+    position: relative;
+    cursor: pointer;
+}
+.textarea{
+    height: 100px;
+}

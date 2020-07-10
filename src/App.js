@@ -11,6 +11,8 @@ import Login from "./pages/Login/Login.page";
 import RecoverPassword from "./pages/RecoverPassword/RecoverPassword.page";
 import SignUp from "./pages/SignUp/SignUp.page";
 import AboutUs from "./pages/AboutUs/AboutUs.page";
+import CreateClassRoom from "./pages/CreateClassroom/CreateClassRoom.page";
+import SeeClassRooms from "./pages/SeeClassRooms/SeeClassRooms.page";
 
 import Copyright from "./components/Copyright/Copyright.component";
 import Navigation from "./components/Navigation/Navigation.component";
@@ -108,6 +110,18 @@ class App extends Component {
                   path="/sign-up"
                   render={() => {
                     return <SignUp />;
+                  }}
+                />
+                <Route
+                  path="/createclassroom"
+                  render={() => {
+                    return <CreateClassRoom />;
+                  }}
+                />
+                <Route
+                  path="/classrooms"
+                  render={() => {
+                    return <SeeClassRooms />;
                   }}
                 />
                 <Route

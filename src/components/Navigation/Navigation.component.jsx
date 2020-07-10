@@ -43,8 +43,10 @@ const Navigation = ({ currentUser, changeState }) => {
           <>
             <Nav className="ml-auto">
               <NavDropdown title="Aulas" id="collasible-nav-dropdown">
-                <NavDropdownItem to="/action/3.1">Ver Aulas</NavDropdownItem>
-                <NavDropdownItem to="/action/3.2">Crear Aulas</NavDropdownItem>
+                <NavDropdownItem to="/classrooms">Ver Aulas</NavDropdownItem>
+                <NavDropdownItem to="/createclassroom">
+                  Crear Aulas
+                </NavDropdownItem>
               </NavDropdown>
               <NavDropdown title="Asignaciones" id="collasible-nav-dropdown">
                 <NavDropdownItem to="/action/3.1">
