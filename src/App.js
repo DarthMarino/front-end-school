@@ -68,7 +68,14 @@ class App extends Component {
                   exact
                   path="/"
                   render={() => {
-                    return <AboutUs />;
+                    return (
+                      <InviteUsers
+                        currentUser={currentUser}
+                        currentClass={currentClass}
+                        users={users}
+                        changeState={this.changeState}
+                      />
+                    );
                   }}
                 />
                 <Route
@@ -104,7 +111,7 @@ class App extends Component {
                         changeState={this.changeState}
                       />
                     ) : (
-                      <Redirect to="/" />
+                      <Redirect to="/inviteUsers" />
                     );
                   }}
                 />

@@ -16,7 +16,7 @@ export default class RecoverPassword extends Component {
           />
         </div>
         <button type="submit" className="btn btn-outline-success btn-block">
-          Cambiar clave
+          Solicitar cambio de clave
         </button>
       </>
     );

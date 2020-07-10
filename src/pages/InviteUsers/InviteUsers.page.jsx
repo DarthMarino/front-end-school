@@ -8,7 +8,7 @@ export default class InviteUsers extends Component {
   componentDidMount() {
     if (!this.fetchRef) {
       this.fetchRef = fetch(
-        "https://school2cool-api.herokuapp.com/classrooms/5ef7dab69335230d20843e45/students",
+        "http://localhost:5000/classrooms/5ef7dab69335230d20843e45/students",
         {
           headers: {
             Authorization:

@@ -51,14 +51,16 @@ export default class Login extends Component {
             {/* <button type="submit" className="btn btn-outline-warning btn-block">Iniciar sesión con google</button> */}
             <GoogleButton />
             <p className="forgot-password text-right">
-              ¿Olvidaste tu
+              <a href="/sign-up">Crear una cuenta</a>
+            </p>
+            <p className="forgot-password text-right">
               <span
                 className="cursor-pointer"
                 onClick={() => {
                   this.setState({ displayForgot: !this.state.displayForgot });
                 }}
               >
-                contraseña?
+                ¿Olvidaste tu contraseña?
               </span>
             </p>
           </>
