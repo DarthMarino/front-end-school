@@ -10,29 +10,30 @@ import InviteUsers from "./pages/InviteUsers/InviteUsers.page";
 import Login from "./pages/Login/Login.page";
 import RecoverPassword from "./pages/RecoverPassword/RecoverPassword.page";
 import SignUp from "./pages/SignUp/SignUp.page";
+import AboutUs from "./pages/AboutUs/AboutUs.page";
 
 import Copyright from "./components/Copyright/Copyright.component";
 import Navigation from "./components/Navigation/Navigation.component";
 
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import AboutUs from "./pages/AboutUs/AboutUs.page";
 
+const InitialState = {
+  currentUser: JSON.parse(localStorage.getItem("currentUser")),
+  currentClass: "5ef7dab69335230d20843e45",
+  users: [],
+  userToken: localStorage.getItem("userToken"),
+};
 // Mover esto a un componente aparte.
 class App extends Component {
-  state = {
-    currentUser: null,
-    currentClass: "5ef7dab69335230d20843e45",
-    users: [],
-  };
-  fetchRef = null;
+  state = InitialState;
 
   componentDidMount() {
-    if (!this.fetchRef) {
-      this.fetchRef = fetch("http://localhost:5000/users", {
+    const { userToken } = this.state;
+    if (userToken) {
+      fetch("https://school2cool-api.herokuapp.com/users", {
         headers: {
-          Authorization:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWY3ZDYyY2JhZGNlZjJlNjA4ZWU4ODciLCJpYXQiOjE1OTMzMDA5NzV9.HgM4EpK6pTKKSeKPIsnd0a5PVeLhYVQMEKBsDW2WdIY",
+          Authorization: userToken,
           "Content-Type": "application/json",
         },
       })
@@ -48,8 +49,19 @@ class App extends Component {
     }
   }
 
+  componentDidUpdate() {}
+
   changeState = (appState, value) => {
-    if (this.state.hasOwnProperty(appState)) {
+    if (!appState) return;
+    if (appState === "LOGOUT") {
+      this.setState({ currentUser: null, userToken: null });
+    }
+    if (typeof appState === "object") {
+      this.setState(appState);
+    } else if (
+      typeof appState === "string" &&
+      this.state.hasOwnProperty(appState)
+    ) {
       this.setState({ [appState]: value });
     }
   };
@@ -60,7 +72,10 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navigation currentUser={currentUser} />
+          <Navigation
+            currentUser={currentUser}
+            changeState={this.changeState}
+          />
           <div className="auth-wrapper">
             <div className="auth-inner">
               <Switch>
@@ -69,19 +84,24 @@ class App extends Component {
                   path="/"
                   render={() => {
                     return (
-                      <InviteUsers
+                      <AboutUs />
+                      /*<InviteUsers
                         currentUser={currentUser}
                         currentClass={currentClass}
                         users={users}
                         changeState={this.changeState}
-                      />
+                      />*/
                     );
                   }}
                 />
                 <Route
                   path="/sign-in"
                   render={() => {
-                    return !currentUser ? <Login /> : <Redirect to="/" />;
+                    return !currentUser ? (
+                      <Login changeState={this.changeState} />
+                    ) : (
+                      <Redirect to="/" />
+                    );
                   }}
                 />
                 <Route
@@ -102,6 +122,21 @@ class App extends Component {
                 />
                 <Route
                   path="/inviteUsers"
+                  render={() => {
+                    return currentUser && users.length ? (
+                      <InviteUsers
+                        currentUser={currentUser}
+                        currentClass={currentClass}
+                        users={users}
+                        changeState={this.changeState}
+                      />
+                    ) : (
+                      <Redirect to="/inviteUsers" />
+                    );
+                  }}
+                />
+                <Route
+                  path="/notifications"
                   render={() => {
                     return currentUser && users.length ? (
                       <InviteUsers
