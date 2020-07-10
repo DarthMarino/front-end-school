@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   Redirect,
+  Link,
 } from "react-router-dom";
 
 import InviteUsers from "./pages/InviteUsers/InviteUsers.page";
@@ -17,8 +18,11 @@ import Navigation from "./components/Navigation/Navigation.component";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import AboutUs from "./pages/AboutUs/AboutUs.page";
+import ClassRoom from "./pages/ClassRoom/ClassRoom";
+import { SeeClassRooms } from "./pages/ClassRoom/SeeClassRooms";
 
-// Mover esto a un componente aparte.
+
+
 class App extends Component {
   state = {
     currentUser: null,
@@ -88,6 +92,18 @@ class App extends Component {
                   path="/sign-up"
                   render={() => {
                     return <SignUp />;
+                  }}
+                />
+                <Route
+                  path="/classroom"
+                  render={() => {
+                    return <ClassRoom />;
+                  }}
+                />
+                <Route
+                  path="/seeclassrooms"
+                  render={() => {
+                    return <SeeClassRooms />;
                   }}
                 />
                 <Route
