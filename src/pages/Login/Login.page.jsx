@@ -81,9 +81,14 @@ export default class Login extends Component {
                 </label>
               </div>
             </div>
-            <button type="submit" className="btn btn-outline-primary btn-block">
-              Iniciar sesión
-            </button>
+            <a href="/">
+              <button
+                type="submit"
+                className="btn btn-outline-primary btn-block"
+              >
+                Iniciar sesión
+              </button>
+            </a>
             {this.state.error ? (
               <>
                 <br />

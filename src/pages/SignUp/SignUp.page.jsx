@@ -16,11 +16,6 @@ export default class SignUp extends Component {
           />
         </div>
 
-        {/* <div className="form-group">
-                    <label>Segundo nombre</label>
-                    <input type="text" className="form-control" placeholder="Segundo nombre" />
-                </div> */}
-
         <div className="form-group">
           <label>Apellido</label>
           <input type="text" className="form-control" placeholder="Apellido" />

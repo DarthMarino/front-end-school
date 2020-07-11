@@ -13,9 +13,11 @@ import SignUp from "./pages/SignUp/SignUp.page";
 import AboutUs from "./pages/AboutUs/AboutUs.page";
 import CreateClassRoom from "./pages/CreateClassroom/CreateClassRoom.page";
 import SeeClassRooms from "./pages/SeeClassRooms/SeeClassRooms.page";
+import RubricsPage from "./pages/RubricsPage/RubricsPage.page";
 
 import Copyright from "./components/Copyright/Copyright.component";
 import Navigation from "./components/Navigation/Navigation.component";
+import RubricList from "./components/RubricList/RubricList.component";
 
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -122,6 +124,18 @@ class App extends Component {
                   path="/classrooms"
                   render={() => {
                     return <SeeClassRooms />;
+                  }}
+                />
+                <Route
+                  path="/rubrics"
+                  render={() => {
+                    return <RubricsPage />;
+                  }}
+                />
+                <Route
+                  path="/rubricsList"
+                  render={() => {
+                    return <RubricList />;
                   }}
                 />
                 <Route

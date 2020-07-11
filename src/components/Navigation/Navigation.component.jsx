@@ -56,7 +56,8 @@ const Navigation = ({ currentUser, changeState }) => {
                   Crear Asignaciones
                 </NavDropdownItem>
               </NavDropdown>
-              <NavLink to="/pricing">Rúbricas</NavLink>
+              <NavLink to="/rubrics">Rúbricas</NavLink>
+              <NavLink to="/inviteUsers">Invitar Usuarios</NavLink>
               <NavDropdown title="Revisiones" id="collasible-nav-dropdown">
                 <NavDropdownItem to="/action/3.1">Solicitadas</NavDropdownItem>
                 <NavDropdownItem to="/action/3.2">Atendidas</NavDropdownItem>

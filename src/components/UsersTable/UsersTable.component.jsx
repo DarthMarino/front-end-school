@@ -11,7 +11,7 @@ const UsersTable = ({
   const handleSelect = useCallback(
     (user) => {
       fetch(
-        "http://localhost:5000/classrooms/5ef7dab69335230d20843e45/add_student",
+        "https://school2cool-api.herokuapp.com/classrooms/5ef7dab69335230d20843e45/add_student",
         {
           method: "post",
           headers: {
