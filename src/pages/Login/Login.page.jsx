@@ -46,12 +46,12 @@ export default class Login extends Component {
             <h3>¡Bienvenido a School2Cool!</h3>
             <img src={Icon2} className="login-logo-img" alt="logo" />
             <div className="form-group">
-              <label>ID usuario</label>
+              <label>Email</label>
               <input
                 name="email"
                 type="email"
                 className="form-control"
-                placeholder="Id usuario"
+                placeholder="email usuario"
                 onChange={this.handleChange}
               />
               <small className="text-muted">

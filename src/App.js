@@ -81,7 +81,7 @@ class App extends Component {
             changeState={this.changeState}
           />
           <div className="auth-wrapper">
-            <div className="auth-inner">
+            <div className="auth-inner" style={{marginTop:100}}>
               <Switch>
                 <Route
                   exact
