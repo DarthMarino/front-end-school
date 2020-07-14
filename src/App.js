@@ -59,6 +59,7 @@ class App extends Component {
     if (!appState) return;
     if (appState === "LOGOUT") {
       this.setState({ currentUser: null, userToken: null });
+      localStorage.clear();
     }
     if (typeof appState === "object") {
       this.setState(appState);
@@ -81,7 +82,7 @@ class App extends Component {
             changeState={this.changeState}
           />
           <div className="auth-wrapper">
-            <div className="auth-inner" style={{marginTop:100}}>
+            <div className="auth-inner" style={{ marginTop: 100 }}>
               <Switch>
                 <Route
                   exact
