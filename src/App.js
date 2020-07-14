@@ -80,38 +80,43 @@ class App extends Component {
             currentUser={currentUser}
             changeState={this.changeState}
           />
-          <div className="auth-wrapper">
-            <div className="auth-inner" style={{marginTop:100}}>
+          <div className="auth-wrapper" style={{backgroundColor:'white'}}>
               <Switch>
                 <Route
                   exact
                   path="/"
                   render={() => {
                     return (
+                    <div className="auth-inner" style={{marginTop:100}}>
                       <AboutUs />
-                      /*<InviteUsers
+                      {/* <InviteUsers
                         currentUser={currentUser}
                         currentClass={currentClass}
                         users={users}
                         changeState={this.changeState}
-                      />*/
+                      /> */}
+                      </div>
                     );
                   }}
                 />
                 <Route
                   path="/sign-in"
                   render={() => {
-                    return !currentUser ? (
+                    return <div className="auth-inner" style={{marginTop:100}}>
+                      {!currentUser ? (
                       <Login changeState={this.changeState} />
                     ) : (
                       <Redirect to="/" />
-                    );
+                    )}
+                    </div>
                   }}
                 />
                 <Route
                   path="/sign-up"
                   render={() => {
-                    return <SignUp />;
+                    return <div className="auth-inner" style={{marginTop:100}}>
+                      <SignUp />
+                      </div>
                   }}
                 />
                 <Route
@@ -151,7 +156,8 @@ class App extends Component {
                 <Route
                   path="/inviteUsers"
                   render={() => {
-                    return currentUser && users.length ? (
+                    return <div className="auth-inner" style={{marginTop:100}}>
+                      {currentUser && users.length ? (
                       <InviteUsers
                         currentUser={currentUser}
                         currentClass={currentClass}
@@ -160,7 +166,9 @@ class App extends Component {
                       />
                     ) : (
                       <Redirect to="/inviteUsers" />
-                    );
+                    )
+                  }
+                  </div>
                   }}
                 />
                 <Route
@@ -179,9 +187,8 @@ class App extends Component {
                   }}
                 />
               </Switch>
-            </div>
-            <Copyright />
           </div>
+          <Copyright />
         </div>
       </Router>
     );
