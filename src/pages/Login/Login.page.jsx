@@ -58,6 +58,7 @@ export default class Login extends Component {
                 School2Cool nunca compartirá su información
               </small>
             </div>
+            <label>Clave</label>
             <div className="form-group">
               <input
                 name="password"

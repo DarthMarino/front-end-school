@@ -1,0 +1,15 @@
+#btnSalir{
+    position: relative;
+    border-radius: 15px;
+    margin-left: 220px;
+}
+#datosGenerales{
+    text-align: center;
+}
+.Button{
+    /* margin-left: 300px; */
+    position: relative;
+}
+#btn{
+    margin-left: 110px;
+}

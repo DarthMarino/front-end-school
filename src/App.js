@@ -21,6 +21,7 @@ import RubricList from "./components/RubricList/RubricList.component";
 
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import AtClassRoom from "./pages/ClassRoom/AtClassRoom.page";
 
 const InitialState = {
   currentUser: JSON.parse(localStorage.getItem("currentUser")),
@@ -124,6 +125,12 @@ class App extends Component {
                   path="/classrooms"
                   render={() => {
                     return <SeeClassRooms />;
+                  }}
+                />
+                <Route
+                  path="/atclassroom"
+                  render={() => {
+                    return <AtClassRoom />;
                   }}
                 />
                 <Route

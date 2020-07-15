@@ -8,6 +8,17 @@
     position: relative;
     cursor: pointer;
 }
-.textarea{
-    height: 100px;
+#title{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: black;
+}
+.p{
+
+    border: 1px solid black;
+}
+#textarea{
+    height: 200px;
+    text-align: center;
+    text-decoration: inherit;
 }

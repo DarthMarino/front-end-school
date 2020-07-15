@@ -31,7 +31,10 @@ export default class CreateClassRoom extends Component {
   render() {
     return (
       <form>
-        <h1>Crear aula</h1>
+        <div id="title">
+        <h1 className="card-title" >Crear aula</h1>
+        <p id="s">Un aula permite que docente y alumnos puedan compartir conocimientos en un ambiente diseñado para aprovechar al máximo los recursos disponibles</p>
+        </div>
         <InputGroup size="sm" className="mb-3">
           <InputGroup.Prepend>
             <InputGroup.Text id="inputGroup-sizing-sm">
@@ -52,6 +55,7 @@ export default class CreateClassRoom extends Component {
             <InputGroup.Text>Descripción</InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
+            id="textarea"
             name="description"
             as="textarea"
             aria-label="With textarea"
