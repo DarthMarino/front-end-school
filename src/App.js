@@ -155,7 +155,9 @@ class App extends Component {
                 <Route
                   path="/createRubric"
                   render={() => {
-                    return <CreateRubric />;
+                    return <div className="auth-wrapper" style={{marginTop:30}}>
+                    <CreateRubric />
+                    </div>
                   }}
                 />
                 <Route
