@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState } from 'react'; 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -153,9 +153,16 @@ export default function AssignmentForm(props) {
     }
     const handleDropdownChange  = (e) => {
         if (e.target.value) {
+            let propName = e.target.className
+            if (propName.startsWith('rubric')) {
+                propName = 'rubric'
+            }
+            if (propName.startsWith('classroom')) {
+                propName = 'classroom'
+            }
             setDeliverableInformationState({
                 ...deliverableInformationState, 
-                [e.target.className]: e.target.value._id
+                [propName]: e.target.value
             })   
         }
     }
@@ -314,18 +321,27 @@ export default function AssignmentForm(props) {
 
         <h3> Datos de la entrega </h3>
         <Form.Group controlId="AssignmentForm.ClassroomsSelect">
-            <Form.Label>Áula</Form.Label>
-            <Form.Control as="select" className="classroom" value={deliverableInformationState.classroom} onChange={handleDropdownChange}>
+            <Form.Label>Aula</Form.Label>
+            <Form.Control as="select" className="classroom" onChange={handleDropdownChange}>
                 {
-                    classrooms.map(classroom => <option key={classroom._id}>{classroom.name}</option>)
+                    classrooms.map(classroom => 
+                    <option
+                        value={classroom._id}
+                        key={classroom._id}>
+                            {classroom.name}</option>)
                 }
             </Form.Control>
         </Form.Group>
         <Form.Group controlId="AssignmentForm.RubricsSelect">
             <Form.Label>Rúbrica</Form.Label>
-            <Form.Control as="select" className="rubric" value={deliverableInformationState.rubric} onChange={handleDropdownChange}>
+            <Form.Control as="select" className="rubric" 
+            onChange={handleDropdownChange}>
                 {
-                    rubrics.map(rubric => <option key={rubric._id}>{rubric.name}</option>)
+                    rubrics.map(rubric => 
+                    <option 
+                        value={rubric._id}
+                        key={rubric._id}>
+                            {rubric.name}</option>)
                 }
             </Form.Control>
         </Form.Group>

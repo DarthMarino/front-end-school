@@ -17,6 +17,8 @@ import RubricsPage from "./pages/RubricsPage/RubricsPage.page";
 import CreateRubric from "./pages/CreateRubric/CreateRubric"
 import CreateAssignment from './pages/CreateAssignment/CreateAssignment'
 
+
+import AssignmentList from './components/AssignmentList/AssignmentList'
 import Copyright from "./components/Copyright/Copyright.component";
 import Navigation from "./components/Navigation/Navigation.component";
 
@@ -149,6 +151,18 @@ class App extends Component {
                   path="/createAssignment"
                   render={() => {
                     return <CreateAssignment />;
+                  }}
+                />
+                <Route
+                  path="/assignmentListStudent"
+                  render={() => {
+                    return <AssignmentList isTeacher={false}/>;
+                  }}
+                />
+                <Route
+                  path="/assignmentListTeacher"
+                  render={() => {
+                    return <AssignmentList isTeacher={true}/>;
                   }}
                 />
                 <Route
