@@ -1,24 +1,36 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import FullScreenDialog from '../FullScreenDialog/FullScreenDialog'
+import RubricTable from '../RubricTable/RubricTable'
 
-const RubricList = (props) => {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: 'auto-fit',
+    marginBottom: theme.spacing(3)
+  },
+}));
+
+export default function RecipeReviewCard(props) {
+  const classes = useStyles();
   const rubrics = props.rubrics ? props.rubrics : [];
-
   return (
     <div>
-      {rubrics.map((rubric) => {
-        return (
-          <Card key={rubric._id}>
-            <Card.Body>
-              <Card.Title>{rubric.name}</Card.Title>
-              <Card.Text>{rubric.description}</Card.Text>
-              <Card.Link href="#">Ver</Card.Link>
-            </Card.Body>
-          </Card>
-        );
-      })}
+    {
+      rubrics.map((rubric) =>
+      <Card className={classes.root} key={rubric._id}>
+        <CardHeader
+          action={
+            <FullScreenDialog option="Ver Rúbrica"> <RubricTable rubric={rubric}/> </FullScreenDialog>
+          }
+          title={rubric.name}
+          subheader={rubric.description}
+        />
+      </Card>
+      )
+    }
     </div>
   );
-};
+}
 
-export default RubricList;

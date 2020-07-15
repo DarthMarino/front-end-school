@@ -14,10 +14,13 @@ import AboutUs from "./pages/AboutUs/AboutUs.page";
 import CreateClassRoom from "./pages/CreateClassroom/CreateClassRoom.page";
 import SeeClassRooms from "./pages/SeeClassRooms/SeeClassRooms.page";
 import RubricsPage from "./pages/RubricsPage/RubricsPage.page";
+import CreateRubric from "./pages/CreateRubric/CreateRubric"
+import CreateAssignment from './pages/CreateAssignment/CreateAssignment'
 
+
+import AssignmentList from './components/AssignmentList/AssignmentList'
 import Copyright from "./components/Copyright/Copyright.component";
 import Navigation from "./components/Navigation/Navigation.component";
-import RubricList from "./components/RubricList/RubricList.component";
 
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -60,6 +63,7 @@ class App extends Component {
     if (!appState) return;
     if (appState === "LOGOUT") {
       this.setState({ currentUser: null, userToken: null });
+      localStorage.clear();
     }
     if (typeof appState === "object") {
       this.setState(appState);
@@ -76,43 +80,48 @@ class App extends Component {
 
     return (
       <Router>
-        <div className="App">
+        <div>
           <Navigation
             currentUser={currentUser}
             changeState={this.changeState}
           />
-          <div className="auth-wrapper">
-            <div className="auth-inner" style={{marginTop:100}}>
+          <div style={{backgroundColor:'white'}}>
               <Switch>
                 <Route
                   exact
                   path="/"
                   render={() => {
                     return (
+                    <div className="auth-inner" style={{marginTop:100}}>
                       <AboutUs />
-                      /*<InviteUsers
+                      {/* <InviteUsers
                         currentUser={currentUser}
                         currentClass={currentClass}
                         users={users}
                         changeState={this.changeState}
-                      />*/
+                      /> */}
+                      </div>
                     );
                   }}
                 />
                 <Route
                   path="/sign-in"
                   render={() => {
-                    return !currentUser ? (
+                    return <div className="auth-inner" style={{marginTop:100}}>
+                      {!currentUser ? (
                       <Login changeState={this.changeState} />
                     ) : (
                       <Redirect to="/" />
-                    );
+                    )}
+                    </div>
                   }}
                 />
                 <Route
                   path="/sign-up"
                   render={() => {
-                    return <SignUp />;
+                    return <div className="auth-inner" style={{marginTop:100}}>
+                      <SignUp />
+                      </div>
                   }}
                 />
                 <Route
@@ -140,9 +149,27 @@ class App extends Component {
                   }}
                 />
                 <Route
-                  path="/rubricsList"
+                  path="/createRubric"
                   render={() => {
-                    return <RubricList />;
+                    return <CreateRubric />;
+                  }}
+                />
+                <Route
+                  path="/createAssignment"
+                  render={() => {
+                    return <CreateAssignment />;
+                  }}
+                />
+                <Route
+                  path="/assignmentListStudent"
+                  render={() => {
+                    return <AssignmentList isTeacher={false}/>;
+                  }}
+                />
+                <Route
+                  path="/assignmentListTeacher"
+                  render={() => {
+                    return <AssignmentList isTeacher={true}/>;
                   }}
                 />
                 <Route
@@ -158,7 +185,8 @@ class App extends Component {
                 <Route
                   path="/inviteUsers"
                   render={() => {
-                    return currentUser && users.length ? (
+                    return <div className="auth-inner" style={{marginTop:100}}>
+                      {currentUser && users.length ? (
                       <InviteUsers
                         currentUser={currentUser}
                         currentClass={currentClass}
@@ -167,7 +195,9 @@ class App extends Component {
                       />
                     ) : (
                       <Redirect to="/inviteUsers" />
-                    );
+                    )
+                  }
+                  </div>
                   }}
                 />
                 <Route
@@ -186,9 +216,8 @@ class App extends Component {
                   }}
                 />
               </Switch>
-            </div>
-            <Copyright />
           </div>
+          <Copyright />
         </div>
       </Router>
     );

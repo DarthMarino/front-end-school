@@ -49,10 +49,13 @@ const Navigation = ({ currentUser, changeState }) => {
                 </NavDropdownItem>
               </NavDropdown>
               <NavDropdown title="Asignaciones" id="collasible-nav-dropdown">
-                <NavDropdownItem to="/action/3.1">
-                  Ver Asignaciones
+                <NavDropdownItem to="/assignmentListStudent">
+                  Ver Asignaciones de alumno
                 </NavDropdownItem>
-                <NavDropdownItem to="/action/3.2">
+                <NavDropdownItem to="/assignmentListTeacher">
+                  Ver Asignaciones de docente
+                </NavDropdownItem>
+                <NavDropdownItem to="/createAssignment">
                   Crear Asignaciones
                 </NavDropdownItem>
               </NavDropdown>
