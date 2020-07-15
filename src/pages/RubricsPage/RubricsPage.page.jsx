@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   blankPageTitle: {
-    margin: theme.spacing(100),
+    margin: theme.spacing(15),
     color: '#455A64',
     textAlign: 'center'
   }

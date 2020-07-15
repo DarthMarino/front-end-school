@@ -15,6 +15,7 @@ import CreateClassRoom from "./pages/CreateClassroom/CreateClassRoom.page";
 import SeeClassRooms from "./pages/SeeClassRooms/SeeClassRooms.page";
 import RubricsPage from "./pages/RubricsPage/RubricsPage.page";
 import CreateRubric from "./pages/CreateRubric/CreateRubric"
+import CreateAssignment from './pages/CreateAssignment/CreateAssignment'
 
 import Copyright from "./components/Copyright/Copyright.component";
 import Navigation from "./components/Navigation/Navigation.component";
@@ -142,6 +143,12 @@ class App extends Component {
                   path="/createRubric"
                   render={() => {
                     return <CreateRubric />;
+                  }}
+                />
+                <Route
+                  path="/createAssignment"
+                  render={() => {
+                    return <CreateAssignment />;
                   }}
                 />
                 <Route

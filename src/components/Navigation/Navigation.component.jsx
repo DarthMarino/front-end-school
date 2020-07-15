@@ -52,7 +52,7 @@ const Navigation = ({ currentUser, changeState }) => {
                 <NavDropdownItem to="/action/3.1">
                   Ver Asignaciones
                 </NavDropdownItem>
-                <NavDropdownItem to="/action/3.2">
+                <NavDropdownItem to="/createAssignment">
                   Crear Asignaciones
                 </NavDropdownItem>
               </NavDropdown>
