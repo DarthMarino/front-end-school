@@ -107,7 +107,7 @@ class App extends Component {
                 <Route
                   path="/sign-in"
                   render={() => {
-                    return <div className="auth-inner" style={{marginTop:100}}>
+                    return <div className="auth-inner" style={{marginTop:50}}>
                       {!currentUser ? (
                       <Login changeState={this.changeState} />
                     ) : (
@@ -119,7 +119,7 @@ class App extends Component {
                 <Route
                   path="/sign-up"
                   render={() => {
-                    return <div className="auth-inner" style={{marginTop:100}}>
+                    return <div className="auth-inner" style={{marginTop:50}}>
                       <SignUp />
                       </div>
                   }}
@@ -133,13 +133,17 @@ class App extends Component {
                 <Route
                   path="/classrooms"
                   render={() => {
-                    return <SeeClassRooms />;
+                    return <div className="auth-wrapper" style={{marginTop:30}}>
+                    <SeeClassRooms />
+                    </div>
                   }}
                 />
                 <Route
                   path="/atclassroom"
                   render={() => {
-                    return <AtClassRoom />;
+                    return <div className="auth-wrapper" style={{marginTop:30}}>
+                      <AtClassRoom />
+                      </div>
                   }}
                 />
                 <Route

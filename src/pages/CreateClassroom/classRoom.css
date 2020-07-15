@@ -1,24 +1,16 @@
-.card{
-    margin: 10px ;
-    position: relative;
-    width: 100px;
-    height: 100px;
-}
-.div{
-    position: relative;
-    cursor: pointer;
-}
 #title{
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-shadow: black;
 }
-.p{
-
-    border: 1px solid black;
-}
 #textarea{
     height: 200px;
     text-align: center;
     text-decoration: inherit;
+}  
+#formu{
+    text-align: center;
+    display: flex;
+    width: 40rem;
+    margin: auto;
 }

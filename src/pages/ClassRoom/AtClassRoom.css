@@ -1,7 +1,7 @@
 #btnSalir{
     position: relative;
     border-radius: 15px;
-    margin-left: 220px;
+    margin-left: 88%;
 }
 #datosGenerales{
     text-align: center;
@@ -11,5 +11,5 @@
     position: relative;
 }
 #btn{
-    margin-left: 110px;
+    margin-left: 5%;
 }

@@ -41,9 +41,10 @@ export default class SeeClassRooms extends Component {
           <Form.Check type="radio" inline label="Estudiante" />
         </Form.Group>
         </div>
-
+        <div id="content">
         {classrooms.map((classroom) => {
           return (
+            <div id="singleCard">
             <Card border={classroom.border} style={{ width: "18rem" ,height: "8rem"}}>
               <Card.Header key={classroom.id}>{classroom.name}</Card.Header>
               <Card.Body>
@@ -52,8 +53,10 @@ export default class SeeClassRooms extends Component {
                 </Card.Subtitle>
               </Card.Body>
             </Card>
+            </div>
           );
         })}
+        </div>
       </form>
     );
   }

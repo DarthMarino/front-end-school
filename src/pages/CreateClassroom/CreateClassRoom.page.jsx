@@ -94,7 +94,7 @@ export default function CreateClassRoom(props)  {
     setState({ ...state, [name]: value, error: false });
   };
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="formu">
     <Paper>
       <Typography variant="h3" component="h3" className={classes.title}>
         Crear Aula

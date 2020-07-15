@@ -1,4 +1,5 @@
-#title{
-    text-align: center;
-    
+#singleCard{
+    text-align: left;
+    display: inline-block;
+    margin: 0 auto 10px 10px;
 }
