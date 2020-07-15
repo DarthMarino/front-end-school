@@ -14,10 +14,10 @@ import AboutUs from "./pages/AboutUs/AboutUs.page";
 import CreateClassRoom from "./pages/CreateClassroom/CreateClassRoom.page";
 import SeeClassRooms from "./pages/SeeClassRooms/SeeClassRooms.page";
 import RubricsPage from "./pages/RubricsPage/RubricsPage.page";
+import CreateRubric from "./pages/CreateRubric/CreateRubric"
 
 import Copyright from "./components/Copyright/Copyright.component";
 import Navigation from "./components/Navigation/Navigation.component";
-import RubricList from "./components/RubricList/RubricList.component";
 
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -76,17 +76,12 @@ class App extends Component {
 
     return (
       <Router>
-        <div className="App">
+        <div>
           <Navigation
             currentUser={currentUser}
             changeState={this.changeState}
           />
-<<<<<<< HEAD
-          <div className="auth-wrapper" style={{backgroundColor:'white'}}>
-=======
-          <div className="auth-wrapper">
-            <div className="auth-inner" style={{ marginTop: 100 }}>
->>>>>>> master
+          <div style={{backgroundColor:'white'}}>
               <Switch>
                 <Route
                   exact
@@ -144,9 +139,9 @@ class App extends Component {
                   }}
                 />
                 <Route
-                  path="/rubricsList"
+                  path="/createRubric"
                   render={() => {
-                    return <RubricList />;
+                    return <CreateRubric />;
                   }}
                 />
                 <Route
