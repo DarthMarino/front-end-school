@@ -5,7 +5,6 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-
 import InviteUsers from "./pages/InviteUsers/InviteUsers.page";
 import Login from "./pages/Login/Login.page";
 import RecoverPassword from "./pages/RecoverPassword/RecoverPassword.page";
@@ -24,6 +23,7 @@ import Navigation from "./components/Navigation/Navigation.component";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import AtClassRoom from "./pages/ClassRoom/AtClassRoom.page";
+import createHistory from "history/createBrowserHistory";
 
 const InitialState = {
   currentUser: JSON.parse(localStorage.getItem("currentUser")),
@@ -78,7 +78,7 @@ class App extends Component {
     const { users, currentUser, currentClass } = this.state;
 
     return (
-      <Router>
+      <Router history={createHistory({ basename: process.env.PUBLIC_URL })}>
         <div>
           <Navigation
             currentUser={currentUser}
@@ -88,7 +88,7 @@ class App extends Component {
             <Switch>
               <Route
                 exact
-                path={process.env.PUBLIC_URL + "/"}
+                path="/"
                 render={() => {
                   return (
                     <div className="auth-inner" style={{ marginTop: 100 }}>
