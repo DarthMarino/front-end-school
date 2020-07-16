@@ -23,7 +23,7 @@ import Navigation from "./components/Navigation/Navigation.component";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import AtClassRoom from "./pages/ClassRoom/AtClassRoom.page";
-import createHistory from "history/createBrowserHistory";
+import history from "./utils/history";
 
 const InitialState = {
   currentUser: JSON.parse(localStorage.getItem("currentUser")),
@@ -78,7 +78,7 @@ class App extends Component {
     const { users, currentUser, currentClass } = this.state;
 
     return (
-      <Router history={createHistory({ basename: process.env.PUBLIC_URL })}>
+      <Router history={history({ basename: process.env.PUBLIC_URL })}>
         <div>
           <Navigation
             currentUser={currentUser}
