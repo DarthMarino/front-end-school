@@ -15,9 +15,12 @@ const randomize = () => {
   return Math.floor(Math.random() * 6 + 0);
 };
 
-const SeeClassRooms = () => {
+const SeeClassRooms = ({ users }) => {
   const [classrooms, setClassrooms] = useState([]);
   const [show, setShow] = useState(false);
+  const [currentClass, setClass] = useState(
+    localStorage.getItem("currentClass")
+  );
 
   const onHide = useCallback(() => {
     setShow(false);
@@ -57,6 +60,7 @@ const SeeClassRooms = () => {
                 id="singleCard"
                 onClick={() => {
                   localStorage.setItem("currentClass", classroom._id);
+                  setClass(classroom._id);
                   setShow(true);
                 }}
               >
@@ -77,7 +81,12 @@ const SeeClassRooms = () => {
         </div>
       </form>
 
-      <InviteUsers show={show} onHide={onHide} />
+      <InviteUsers
+        show={show}
+        onHide={onHide}
+        currentClass={currentClass}
+        users={users}
+      />
     </>
   );
 };

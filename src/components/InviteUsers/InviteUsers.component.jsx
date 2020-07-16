@@ -1,66 +1,92 @@
-import React, { Component } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import UsersTable from "../UsersTable/UsersTable.component";
 import { Modal } from "react-bootstrap";
 
-export default class InviteUsers extends Component {
-  state = { selectedUser: null, searchField: "", classUsers: [] };
-  fetchRef = null;
+const InviteUsers = ({
+  users,
+  changeState,
+  currentClass,
+  show = false,
+  onHide = () => {},
+}) => {
+  const [searchField, setSearchField] = useState("");
+  const [classUsers, setClassUsers] = useState([]);
 
-  componentDidMount() {
-    if (!this.fetchRef) {
-      const classRoomId = localStorage.getItem("currentClass");
-      console.log(classRoomId);
-      this.fetchRef = fetch(
-        `https://school2cool-api.herokuapp.com/classrooms/${classRoomId}/students`,
+  useEffect(() => {
+    if (currentClass)
+      fetch(
+        `https://school2cool-api.herokuapp.com/classrooms/${currentClass}/students`,
         {
           headers: {
             Authorization: localStorage.getItem("userToken"),
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin":
-              "https://school2cool-api.herokuapp.com",
           },
         }
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          this.setState({ classUsers: data });
+          setClassUsers(data);
         })
         .catch(console.log);
-    }
-  }
+  }, [currentClass, setClassUsers]);
 
-  handleSearch = ({ target: { value } }) => {
-    this.setState({ searchField: value });
-  };
+  const handleSelect = useCallback(
+    (user) => {
+      fetch(
+        `https://school2cool-api.herokuapp.com/classrooms/${currentClass}/add_student`,
+        {
+          method: "post",
+          headers: {
+            Authorization: localStorage.getItem("userToken"),
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            student: user.id,
+          }),
+        }
+      )
+        .then((data) => {
+          setClassUsers([...classUsers, user]);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    [changeState, setClassUsers, classUsers, currentClass, users]
+  );
 
-  render() {
-    const { searchField, classUsers } = this.state;
-    const { users, changeState, show = false, onHide = () => {} } = this.props;
-    return (
-      <Modal show={show} onHide={onHide}>
-        <Modal.Header>
-          <Modal.Title>Invitar Usuarios</Modal.Title>
-        </Modal.Header>
+  const handleSearch = useCallback(
+    ({ target: { value } }) => {
+      setSearchField(value);
+    },
+    [setSearchField]
+  );
 
-        <Modal.Body>
-          <div>
-            <input
-              type="input"
-              className="form-control"
-              placeholder="Busca por nombre o usuario."
-              onChange={this.handleSearch}
-            />
-          </div>
-          <UsersTable
-            searchField={searchField}
-            classUsers={classUsers}
-            users={users}
-            handleSelect={this.handleSelect}
-            changeState={changeState}
+  return (
+    <Modal show={show} onHide={onHide}>
+      <Modal.Header>
+        <Modal.Title>Invitar Usuarios</Modal.Title>
+      </Modal.Header>
+
+      <Modal.Body>
+        <div>
+          <input
+            type="input"
+            className="form-control"
+            placeholder="Busca por nombre o usuario."
+            onChange={handleSearch}
           />
-        </Modal.Body>
-      </Modal>
-    );
-  }
-}
+        </div>
+        <UsersTable
+          searchField={searchField}
+          classUsers={classUsers}
+          users={users}
+          handleSelect={handleSelect}
+          changeState={changeState}
+        />
+      </Modal.Body>
+    </Modal>
+  );
+};
+
+export default InviteUsers;

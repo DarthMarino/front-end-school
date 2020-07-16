@@ -7,31 +7,8 @@ const UsersTable = ({
   classUsers = [],
   changeState = () => {},
   searchField = "",
+  handleSelect = () => {},
 }) => {
-  const handleSelect = useCallback(
-    (user) => {
-      fetch(
-        "https://school2cool-api.herokuapp.com/classrooms/5ef7dab69335230d20843e45/add_student",
-        {
-          method: "post",
-          headers: {
-            Authorization:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWY3ZDYyY2JhZGNlZjJlNjA4ZWU4ODciLCJpYXQiOjE1OTMzMDA5NzV9.HgM4EpK6pTKKSeKPIsnd0a5PVeLhYVQMEKBsDW2WdIY",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(user),
-        }
-      )
-        .then((data) => {
-          console.log(data);
-          changeState("currentUser", user);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    [changeState]
-  );
   return (
     <Table responsive className="users-table">
       <tbody>
@@ -47,7 +24,7 @@ const UsersTable = ({
             return (
               <tr key={user.id}>
                 <td>{user.name}</td>
-                <td className="bruh">@{user.userName}</td>
+                <td className="User">@{user.userName}</td>
                 <td>
                   <Button variant="primary" onClick={() => handleSelect(user)}>
                     +

@@ -121,7 +121,7 @@ class App extends Component {
               render={() => {
                 return (
                   <div className="auth-wrapper" style={{ marginTop: 30 }}>
-                    <SeeClassRooms />
+                    <SeeClassRooms users={users} />
                   </div>
                 );
               }}

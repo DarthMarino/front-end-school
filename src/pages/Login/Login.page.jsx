@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from "react";
 import RecoverPassword from "../RecoverPassword/RecoverPassword.page";
-//import GoogleButton from "../../components/GoogleButton/GoogleButton.component";
 import Icon2 from "./icon2.png";
 import "./Login.styles.css";
 
@@ -35,15 +34,7 @@ const Login = ({ changeState: changeAppState }) => {
           setError(true);
         });
     },
-    [changeAppState, fetch, setError]
-  );
-
-  const handleChange = useCallback(
-    ({ target: { name, value } }, setFunction) => {
-      setError(false);
-      setFunction(value);
-    },
-    [setError]
+    [email, password, changeAppState, fetch, setError]
   );
 
   return (
@@ -59,8 +50,8 @@ const Login = ({ changeState: changeAppState }) => {
               type="email"
               className="form-control"
               placeholder="email usuario"
-              onChange={(event) => {
-                handleChange(event, setEmail);
+              onChange={({ target: { value } }) => {
+                setEmail(value);
               }}
             />
             <small className="text-muted">
@@ -74,8 +65,8 @@ const Login = ({ changeState: changeAppState }) => {
               type="password"
               className="form-control"
               placeholder="Introduzca su clave"
-              onChange={(event) => {
-                handleChange(event, setPassword);
+              onChange={({ target: { value } }) => {
+                setPassword(value);
               }}
             />
           </div>
