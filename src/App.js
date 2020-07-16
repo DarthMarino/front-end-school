@@ -14,11 +14,10 @@ import AboutUs from "./pages/AboutUs/AboutUs.page";
 import CreateClassRoom from "./pages/CreateClassroom/CreateClassRoom.page";
 import SeeClassRooms from "./pages/SeeClassRooms/SeeClassRooms.page";
 import RubricsPage from "./pages/RubricsPage/RubricsPage.page";
-import CreateRubric from "./pages/CreateRubric/CreateRubric"
-import CreateAssignment from './pages/CreateAssignment/CreateAssignment'
+import CreateRubric from "./pages/CreateRubric/CreateRubric";
+import CreateAssignment from "./pages/CreateAssignment/CreateAssignment";
 
-
-import AssignmentList from './components/AssignmentList/AssignmentList'
+import AssignmentList from "./components/AssignmentList/AssignmentList";
 import Copyright from "./components/Copyright/Copyright.component";
 import Navigation from "./components/Navigation/Navigation.component";
 
@@ -85,143 +84,148 @@ class App extends Component {
             currentUser={currentUser}
             changeState={this.changeState}
           />
-          <div style={{backgroundColor:'white'}}>
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  render={() => {
-                    return (
-                    <div className="auth-inner" style={{marginTop:100}}>
+          <div style={{ backgroundColor: "white" }}>
+            <Switch>
+              <Route
+                exact
+                path="/front-end-school/"
+                render={() => {
+                  return (
+                    <div className="auth-inner" style={{ marginTop: 100 }}>
                       <AboutUs />
-                      {/* <InviteUsers
-                        currentUser={currentUser}
-                        currentClass={currentClass}
-                        users={users}
-                        changeState={this.changeState}
-                      /> */}
-                      </div>
-                    );
-                  }}
-                />
-                <Route
-                  path="/sign-in"
-                  render={() => {
-                    return <div className="auth-inner" style={{marginTop:50}}>
+                    </div>
+                  );
+                }}
+              />
+              <Route
+                path="/sign-in"
+                render={() => {
+                  return (
+                    <div className="auth-inner" style={{ marginTop: 50 }}>
                       {!currentUser ? (
-                      <Login changeState={this.changeState} />
-                    ) : (
-                      <Redirect to="/" />
-                    )}
+                        <Login changeState={this.changeState} />
+                      ) : (
+                        <Redirect to="/" />
+                      )}
                     </div>
-                  }}
-                />
-                <Route
-                  path="/sign-up"
-                  render={() => {
-                    return <div className="auth-inner" style={{marginTop:50}}>
+                  );
+                }}
+              />
+              <Route
+                path="/sign-up"
+                render={() => {
+                  return (
+                    <div className="auth-inner" style={{ marginTop: 50 }}>
                       <SignUp />
-                      </div>
-                  }}
-                />
-                <Route
-                  path="/createclassroom"
-                  render={() => {
-                    return <CreateClassRoom />;
-                  }}
-                />
-                <Route
-                  path="/classrooms"
-                  render={() => {
-                    return <div className="auth-wrapper" style={{marginTop:30}}>
-                    <SeeClassRooms />
                     </div>
-                  }}
-                />
-                <Route
-                  path="/atclassroom"
-                  render={() => {
-                    return <div className="auth-wrapper" style={{marginTop:30}}>
+                  );
+                }}
+              />
+              <Route
+                path="/createclassroom"
+                render={() => {
+                  return <CreateClassRoom />;
+                }}
+              />
+              <Route
+                path="/classrooms"
+                render={() => {
+                  return (
+                    <div className="auth-wrapper" style={{ marginTop: 30 }}>
+                      <SeeClassRooms />
+                    </div>
+                  );
+                }}
+              />
+              <Route
+                path="/atclassroom"
+                render={() => {
+                  return (
+                    <div className="auth-wrapper" style={{ marginTop: 30 }}>
                       <AtClassRoom />
-                      </div>
-                  }}
-                />
-                <Route
-                  path="/rubrics"
-                  render={() => {
-                    return <RubricsPage />;
-                  }}
-                />
-                <Route
-                  path="/createRubric"
-                  render={() => {
-                    return <div className="auth-wrapper" style={{marginTop:30}}>
-                    <CreateRubric />
                     </div>
-                  }}
-                />
-                <Route
-                  path="/createAssignment"
-                  render={() => {
-                    return <CreateAssignment />;
-                  }}
-                />
-                <Route
-                  path="/assignmentListStudent"
-                  render={() => {
-                    return <AssignmentList isTeacher={false}/>;
-                  }}
-                />
-                <Route
-                  path="/assignmentListTeacher"
-                  render={() => {
-                    return <AssignmentList isTeacher={true}/>;
-                  }}
-                />
-                <Route
-                  path="/recoverPass"
-                  render={() => {
-                    return !currentUser ? (
-                      <Redirect to="/" />
-                    ) : (
-                      <RecoverPassword />
-                    );
-                  }}
-                />
-                <Route
-                  path="/inviteUsers"
-                  render={() => {
-                    return <div className="auth-inner" style={{marginTop:100}}>
+                  );
+                }}
+              />
+              <Route
+                path="/rubrics"
+                render={() => {
+                  return <RubricsPage />;
+                }}
+              />
+              <Route
+                path="/createRubric"
+                render={() => {
+                  return (
+                    <div className="auth-wrapper" style={{ marginTop: 30 }}>
+                      <CreateRubric />
+                    </div>
+                  );
+                }}
+              />
+              <Route
+                path="/createAssignment"
+                render={() => {
+                  return <CreateAssignment />;
+                }}
+              />
+              <Route
+                path="/assignmentListStudent"
+                render={() => {
+                  return <AssignmentList isTeacher={false} />;
+                }}
+              />
+              <Route
+                path="/assignmentListTeacher"
+                render={() => {
+                  return <AssignmentList isTeacher={true} />;
+                }}
+              />
+              <Route
+                path="/recoverPass"
+                render={() => {
+                  return !currentUser ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <RecoverPassword />
+                  );
+                }}
+              />
+              <Route
+                path="/inviteUsers"
+                render={() => {
+                  return (
+                    <div className="auth-inner" style={{ marginTop: 100 }}>
                       {currentUser && users.length ? (
-                      <InviteUsers
-                        currentUser={currentUser}
-                        currentClass={currentClass}
-                        users={users}
-                        changeState={this.changeState}
-                      />
-                    ) : (
-                      <Redirect to="/inviteUsers" />
-                    )
-                  }
-                  </div>
-                  }}
-                />
-                <Route
-                  path="/notifications"
-                  render={() => {
-                    return currentUser && users.length ? (
-                      <InviteUsers
-                        currentUser={currentUser}
-                        currentClass={currentClass}
-                        users={users}
-                        changeState={this.changeState}
-                      />
-                    ) : (
-                      <Redirect to="/inviteUsers" />
-                    );
-                  }}
-                />
-              </Switch>
+                        <InviteUsers
+                          currentUser={currentUser}
+                          currentClass={currentClass}
+                          users={users}
+                          changeState={this.changeState}
+                        />
+                      ) : (
+                        <Redirect to="/inviteUsers" />
+                      )}
+                    </div>
+                  );
+                }}
+              />
+              <Route
+                path="/notifications"
+                render={() => {
+                  return currentUser && users.length ? (
+                    <InviteUsers
+                      currentUser={currentUser}
+                      currentClass={currentClass}
+                      users={users}
+                      changeState={this.changeState}
+                    />
+                  ) : (
+                    <Redirect to="/inviteUsers" />
+                  );
+                }}
+              />
+            </Switch>
           </div>
           <Copyright />
         </div>
