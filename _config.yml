@@ -1,0 +1,5 @@
+title: School2Cool
+redirect_to: https://darthmarino.github.io/front-end-school/
+
+plugins:
+  - jekyll-redirect-from
