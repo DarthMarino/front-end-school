@@ -45,10 +45,12 @@ export default function AssignmentList(props) {
         } else {
             setAssignmentListState({
               assignmentList: assignments.map((assignment) => 
-                <div className={classes.containerAssignmentCard}> 
+                <div 
+                  key={assignment._id}
+                  className={classes.containerAssignmentCard}> 
                   <CardAssignment 
                     isTeacher={isTeacher} 
-                    assignment={assignment}/>
+                    assignment={{...assignment}}/>
                 </div>)
           });
         }
