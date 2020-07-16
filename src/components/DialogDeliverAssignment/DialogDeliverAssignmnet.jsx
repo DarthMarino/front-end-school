@@ -41,7 +41,7 @@ const onSubmitDeliverable = (e) => {
     e.preventDefault()
     const data = new FormData()
     data.append('file', deliverableState.deliverable)
-    const url = 'http://localhost:5000'
+    const url = 'https://school2cool-api.herokuapp.com'
     axios.post(`${url}/deliverables/assignment/${assignment._id}`, data, {
       headers: { 'Authorization': `Bearer ${localStorage.getItem("userToken")}` },
       responseType: 'arraybuffer'
@@ -53,7 +53,7 @@ const onSubmitDeliverable = (e) => {
 }
 
 const getDeliverable = (e) => {
-    const url = 'http://localhost:5000'
+    const url = 'https://school2cool-api.herokuapp.com'
     axios.get(`${url}/deliverables/assignment/${assignment._id}`, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem("userToken")}` },
         responseType: 'arraybuffer'

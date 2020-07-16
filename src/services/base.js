@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:5000'
+const API_URL = 'https://school2cool-api.herokuapp.com'
 
 const apiClient = axios.create({
     baseURL: API_URL, // TODO: put API_URL in ENV variables
