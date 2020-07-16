@@ -32,7 +32,7 @@ const Navigation = ({ currentUser, changeState }) => {
       bg="light"
       variant="light"
     >
-      <Link to="front-end-school/">
+      <Link to="/">
         <Navbar.Brand>School2Cool :D</Navbar.Brand>
       </Link>
 
@@ -43,35 +43,27 @@ const Navigation = ({ currentUser, changeState }) => {
           <>
             <Nav className="ml-auto">
               <NavDropdown title="Aulas" id="collasible-nav-dropdown">
-                <NavDropdownItem to="front-end-school/classrooms">
-                  Ver Aulas
-                </NavDropdownItem>
-                <NavDropdownItem to="/front-end-school/createclassroom">
+                <NavDropdownItem to="/classrooms">Ver Aulas</NavDropdownItem>
+                <NavDropdownItem to="/createclassroom">
                   Crear Aulas
                 </NavDropdownItem>
               </NavDropdown>
               <NavDropdown title="Asignaciones" id="collasible-nav-dropdown">
-                <NavDropdownItem to="/front-end-school/assignmentListStudent">
+                <NavDropdownItem to="/assignmentListStudent">
                   Ver Asignaciones de alumno
                 </NavDropdownItem>
-                <NavDropdownItem to="/front-end-school/assignmentListTeacher">
+                <NavDropdownItem to="/assignmentListTeacher">
                   Ver Asignaciones de docente
                 </NavDropdownItem>
-                <NavDropdownItem to="/front-end-school/createAssignment">
+                <NavDropdownItem to="/createAssignment">
                   Crear Asignaciones
                 </NavDropdownItem>
               </NavDropdown>
-              <NavLink to="/front-end-school/rubrics">Rúbricas</NavLink>
-              <NavLink to="/front-end-school/inviteUsers">
-                Invitar Usuarios
-              </NavLink>
+              <NavLink to="/rubrics">Rúbricas</NavLink>
+              <NavLink to="/inviteUsers">Invitar Usuarios</NavLink>
               <NavDropdown title="Revisiones" id="collasible-nav-dropdown">
-                <NavDropdownItem to="/front-end-school/action/3.1">
-                  Solicitadas
-                </NavDropdownItem>
-                <NavDropdownItem to="/front-end-school/action/3.2">
-                  Atendidas
-                </NavDropdownItem>
+                <NavDropdownItem to="/action/3.1">Solicitadas</NavDropdownItem>
+                <NavDropdownItem to="/action/3.2">Atendidas</NavDropdownItem>
               </NavDropdown>
             </Nav>
             <Nav>
@@ -84,7 +76,7 @@ const Navigation = ({ currentUser, changeState }) => {
             <NavDropdown title={dropdownTitle} id="collasible-nav-dropdown">
               <NavDropdownItem to="/action/3.1">Mi usuario</NavDropdownItem>
               <NavDropdownItem
-                to="/front-end-school/"
+                to="/"
                 onClick={() => {
                   changeState("LOGOUT");
                 }}
@@ -93,7 +85,7 @@ const Navigation = ({ currentUser, changeState }) => {
               </NavDropdownItem>
             </NavDropdown>
           ) : (
-            <NavLink to="/front-end-school/sign-in">
+            <NavLink to="/sign-in">
               Iniciar Sesión
               <svg
                 width="1em"

@@ -88,7 +88,7 @@ class App extends Component {
             <Switch>
               <Route
                 exact
-                path="/front-end-school/"
+                path={process.env.PUBLIC_URL + "/"}
                 render={() => {
                   return (
                     <div className="auth-inner" style={{ marginTop: 100 }}>
@@ -98,8 +98,7 @@ class App extends Component {
                 }}
               />
               <Route
-                exact
-                path="/front-end-school/sign-in"
+                path="/sign-in"
                 render={() => {
                   return (
                     <div className="auth-inner" style={{ marginTop: 50 }}>
@@ -113,8 +112,7 @@ class App extends Component {
                 }}
               />
               <Route
-                exact
-                path="/front-end-school/sign-up"
+                path="/sign-up"
                 render={() => {
                   return (
                     <div className="auth-inner" style={{ marginTop: 50 }}>
@@ -124,15 +122,13 @@ class App extends Component {
                 }}
               />
               <Route
-                exact
-                path="/front-end-school/createclassroom"
+                path="/createclassroom"
                 render={() => {
                   return <CreateClassRoom />;
                 }}
               />
               <Route
-                exact
-                path="/front-end-school/classrooms"
+                path="/classrooms"
                 render={() => {
                   return (
                     <div className="auth-wrapper" style={{ marginTop: 30 }}>
@@ -142,8 +138,7 @@ class App extends Component {
                 }}
               />
               <Route
-                exact
-                path="/front-end-school/atclassroom"
+                path="/atclassroom"
                 render={() => {
                   return (
                     <div className="auth-wrapper" style={{ marginTop: 30 }}>
@@ -153,13 +148,13 @@ class App extends Component {
                 }}
               />
               <Route
-                path="/front-end-school/rubrics"
+                path="/rubrics"
                 render={() => {
                   return <RubricsPage />;
                 }}
               />
               <Route
-                path="/front-end-school/createRubric"
+                path="/createRubric"
                 render={() => {
                   return (
                     <div className="auth-wrapper" style={{ marginTop: 30 }}>
@@ -169,25 +164,25 @@ class App extends Component {
                 }}
               />
               <Route
-                path="/front-end-school/createAssignment"
+                path="/createAssignment"
                 render={() => {
                   return <CreateAssignment />;
                 }}
               />
               <Route
-                path="/front-end-school/assignmentListStudent"
+                path="/assignmentListStudent"
                 render={() => {
                   return <AssignmentList isTeacher={false} />;
                 }}
               />
               <Route
-                path="/front-end-school/assignmentListTeacher"
+                path="/assignmentListTeacher"
                 render={() => {
                   return <AssignmentList isTeacher={true} />;
                 }}
               />
               <Route
-                path="/front-end-school/recoverPass"
+                path="/recoverPass"
                 render={() => {
                   return !currentUser ? (
                     <Redirect to="/" />
@@ -197,7 +192,7 @@ class App extends Component {
                 }}
               />
               <Route
-                path="/front-end-school/inviteUsers"
+                path="/inviteUsers"
                 render={() => {
                   return (
                     <div className="auth-inner" style={{ marginTop: 100 }}>
@@ -216,7 +211,7 @@ class App extends Component {
                 }}
               />
               <Route
-                path="/front-end-school/notifications"
+                path="/notifications"
                 render={() => {
                   return currentUser && users.length ? (
                     <InviteUsers
@@ -226,7 +221,7 @@ class App extends Component {
                       changeState={this.changeState}
                     />
                   ) : (
-                    <Redirect to="/front-end-school/inviteUsers" />
+                    <Redirect to="/inviteUsers" />
                   );
                 }}
               />
