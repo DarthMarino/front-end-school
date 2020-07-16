@@ -1,63 +1,85 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Card, Form } from "react-bootstrap";
-import  "./seeClassRooms.css";
-const classrooms = [
-  {
-    id: 0,
-    name: "Lengua Española",
-    description: "Este es el grupo 6 de la materia de Lengua Española de 7mo grado",
-    border: "primary",
-  },
-  {
-    id: 1,
-    name: "Matemáticas",
-    description: "Profesora Jazmin Matos de 8vo A",
-    border: "success",
-  },
-  {
-    id: 2,
-    name: "Ciencias Sociales",
-    description: "Grupo de la materia de 6to grado",
-    border: "danger",
-  },
-  {
-    id: 3,
-    name: "Ciencias Sociales",
-    description: "Grupo de la materia de 8to grado",
-    border: "warning",
-  },
+import "./seeClassRooms.css";
+import InviteUsers from "../../components/InviteUsers/InviteUsers.component";
+const colors = [
+  "primary",
+  "secondary",
+  "success",
+  "danger",
+  "warning",
+  "info",
+  "dark",
 ];
-export default class SeeClassRooms extends Component {
-  render() {
-    return (
+const randomize = () => {
+  return Math.floor(Math.random() * 6 + 0);
+};
+
+const SeeClassRooms = () => {
+  const [classrooms, setClassrooms] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const onHide = useCallback(() => {
+    setShow(false);
+  }, [setShow]);
+
+  useEffect(() => {
+    fetch(`https://school2cool-api.herokuapp.com/classrooms/`, {
+      headers: {
+        Authorization: localStorage.getItem("userToken"),
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setClassrooms(response);
+      });
+    return () => {};
+  }, []);
+
+  return (
+    <>
       <form id="formulario">
         <div id="title">
-        <h1>Ver aulas</h1>
-        <hr />
-        <h3>Yo soy...</h3>
-        
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="radio" inline label="Docente" />
-          <Form.Check type="radio" inline label="Estudiante" />
-        </Form.Group>
+          <h1>Ver aulas</h1>
+          <hr />
+          <h3>Yo soy...</h3>
+          <Form.Group controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" inline label="Docente" />
+            <Form.Check type="checkbox" inline label="Estudiante" />
+          </Form.Group>
         </div>
         <div id="content">
-        {classrooms.map((classroom) => {
-          return (
-            <div id="singleCard">
-            <Card border={classroom.border} style={{ width: "18rem" ,height: "8rem"}}>
-              <Card.Header key={classroom.id}>{classroom.name}</Card.Header>
-              <Card.Body>
-                <Card.Subtitle className="mb-2 text-muted">
-                  {classroom.description}
-                </Card.Subtitle>
-              </Card.Body>
-            </Card>
-            </div>
-          );
-        })}
+          {classrooms.map((classroom) => {
+            return (
+              <div
+                key={classroom._id}
+                id="singleCard"
+                onClick={() => {
+                  localStorage.setItem("currentClass", classroom._id);
+                  setShow(true);
+                }}
+              >
+                <Card
+                  border={colors[randomize()]}
+                  style={{ width: "18rem", height: "8rem" }}
+                >
+                  <Card.Header>{classroom.name}</Card.Header>
+                  <Card.Body>
+                    <Card.Subtitle className="mb-2 text-muted">
+                      {classroom.description}
+                    </Card.Subtitle>
+                  </Card.Body>
+                </Card>
+              </div>
+            );
+          })}
         </div>
       </form>
-    );
-  }
-}
+
+      <InviteUsers show={show} onHide={onHide} />
+    </>
+  );
+};
+
+export default SeeClassRooms;

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import InviteUsers from "./pages/InviteUsers/InviteUsers.page";
 import Login from "./pages/Login/Login.page";
 import RecoverPassword from "./pages/RecoverPassword/RecoverPassword.page";
 import SignUp from "./pages/SignUp/SignUp.page";
@@ -21,7 +20,7 @@ import "./App.css";
 
 const InitialState = {
   currentUser: JSON.parse(localStorage.getItem("currentUser")),
-  currentClass: "5f0f4c878452fb35e8c731a6",
+  currentClass: sessionStorage.getItem("currentClass"),
   users: [],
   userToken: localStorage.getItem("userToken"),
 };
@@ -175,40 +174,6 @@ class App extends Component {
               path="/recoverPass"
               render={() => {
                 return !currentUser ? <Redirect to="/" /> : <RecoverPassword />;
-              }}
-            />
-            <Route
-              path="/inviteUsers"
-              render={() => {
-                return (
-                  <div className="auth-inner" style={{ marginTop: 100 }}>
-                    {currentUser && users.length ? (
-                      <InviteUsers
-                        currentUser={currentUser}
-                        currentClass={currentClass}
-                        users={users}
-                        changeState={this.changeState}
-                      />
-                    ) : (
-                      <Redirect to="/inviteUsers" />
-                    )}
-                  </div>
-                );
-              }}
-            />
-            <Route
-              path="/notifications"
-              render={() => {
-                return currentUser && users.length ? (
-                  <InviteUsers
-                    currentUser={currentUser}
-                    currentClass={currentClass}
-                    users={users}
-                    changeState={this.changeState}
-                  />
-                ) : (
-                  <Redirect to="/inviteUsers" />
-                );
               }}
             />
           </Switch>
