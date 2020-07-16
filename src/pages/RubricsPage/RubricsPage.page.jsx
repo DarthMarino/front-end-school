@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import RubricList from "../../components/RubricList/RubricList.component";
-import {Rubrics} from '../../services/rubrics'
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import 'fontsource-roboto';
+import { Rubrics } from "../../services/rubrics";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import "fontsource-roboto";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     // display: 'flex',
     // flexWrap: 'wrap',
-    maxWidth: 'auto-fit',
-    '& > *': {
+    maxWidth: "auto-fit",
+    "& > *": {
       margin: theme.spacing(5),
-      height: 'auto-fit',
+      height: "auto-fit",
       padding: theme.spacing(10),
     },
   },
@@ -23,37 +24,50 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(5),
   },
   containerRubricList: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexWrap: "wrap",
     justifyContent: "center",
   },
   blankPageTitle: {
     margin: theme.spacing(15),
-    color: '#455A64',
-    textAlign: 'center'
-  }
+    color: "#455A64",
+    textAlign: "center",
+  },
 }));
 
 export default function RubricsPage() {
   const classes = useStyles();
 
   const [rubricListState, setRubricListState] = useState({
-    rubricList: <h1 className={classes.blankPageTitle}> Espere un momento... </h1>,
+    rubricList: (
+      <h1 className={classes.blankPageTitle}> Espere un momento... </h1>
+    ),
   });
 
   useEffect(() => {
     async function getRubrics() {
       try {
-        const rubrics = await Rubrics.index()
-        if(rubrics.statusCode === '404'){
-          setRubricListState({ rubricList: <h1 className={classes.blankPageTitle}> Aún no tienes rúbricas</h1> });
+        const rubrics = await Rubrics.index();
+        if (rubrics.statusCode === "404") {
+          setRubricListState({
+            rubricList: (
+              <h1 className={classes.blankPageTitle}>
+                {" "}
+                Aún no tienes rúbricas
+              </h1>
+            ),
+          });
         } else {
           setRubricListState({
-            rubricList: <RubricList rubrics={rubrics}></RubricList>
+            rubricList: <RubricList rubrics={rubrics}></RubricList>,
           });
         }
       } catch (e) {
-        setRubricListState({ rubricList: <h1 className={classes.blankPageTitle}> Ocurrió un error</h1> });
+        setRubricListState({
+          rubricList: (
+            <h1 className={classes.blankPageTitle}> Ocurrió un error</h1>
+          ),
+        });
       }
     }
     getRubrics();
@@ -65,13 +79,13 @@ export default function RubricsPage() {
         <Typography variant="h2" component="h2">
           Tus Rúbricas
         </Typography>
-        <Button
-          className={classes.button}
-          variant="contained"
-          color="primary"
-          href="/createRubric">
-            Crea una rúbrica
-        </Button>
+        <Link
+          className={`btn btn-primary ${classes.button}`}
+          to="/createRubric"
+          role="button"
+        >
+          Crea una rúbrica
+        </Link>
         <Paper elevation={0} classes={classes.containerRubricList}>
           {rubricListState.rubricList}
         </Paper>
