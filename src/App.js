@@ -28,7 +28,7 @@ import AtClassRoom from "./pages/ClassRoom/AtClassRoom.page";
 
 const InitialState = {
   currentUser: JSON.parse(localStorage.getItem("currentUser")),
-  currentClass: "5ef7dab69335230d20843e45",
+  currentClass: "5f0f4c878452fb35e8c731a6",
   users: [],
   userToken: localStorage.getItem("userToken"),
 };
